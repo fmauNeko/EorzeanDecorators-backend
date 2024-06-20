@@ -1,0 +1,11 @@
+[package]
+name = "eorzean-decorators-backend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7.5", features = ["http2"] }
+enum-iterator = "2.1.0"
+physis = "0.2.3"
+tokio = { version = "1.38.0", features = ["full"] }
+tower = "0.4.13"
