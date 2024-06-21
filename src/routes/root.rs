@@ -1,4 +1,6 @@
-use axum::routing::MethodRouter;
+use axum::{extract::State, routing::MethodRouter};
+
+use crate::app::AppState;
 
 use super::Route;
 
@@ -9,8 +11,8 @@ impl Route for Root {
     "/"
   }
 
-  fn method_router(&self) -> MethodRouter {
+  fn method_router(&self) -> MethodRouter<AppState> {
     use axum::routing::get;
-    get(|| async { "Hello, World!" })
+    get(|State(state): State<AppState>| async move { format!("Hello, {}!", state.name) })
   }
 }
